@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="SuperHeroDao"
+          class="Dao.SuperHeroInMemory">
+        <constructor-arg ref="SuperHeroData" />
+    </bean>
+
+    <bean id="SuperHeroData"
+          class="Dao.SuperHeroData"
+          factory-method="getProdData">
+    </bean>
+
+    <bean id="SuperHeroService"
+          class="Service.SuperHeroService">
+        <constructor-arg ref="SuperHeroDao" />
+
+    </bean>
+
+    <bean id="SuperHeroRunner" class="View.SuperHeroView" />
+
+    <bean id="Controller"
+          class="controller.SuperHeroController">
+        <constructor-arg ref="SuperHeroRunner" />
+        <constructor-arg ref="SuperHeroService" />
+    </bean>
+
+</beans>
