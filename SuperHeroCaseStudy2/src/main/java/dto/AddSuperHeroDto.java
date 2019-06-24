@@ -33,6 +33,8 @@ public class AddSuperHeroDto {
         return SuperName;
     }
 
+   // public String getSuperTeam(){ return SuperTeam;}
+
     public void setSupername(String supername) {
         SuperName = supername;
     }

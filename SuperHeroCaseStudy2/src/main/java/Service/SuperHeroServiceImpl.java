@@ -1,4 +1,4 @@
-package service;
+package Service;
 
 import dao.SuperHeroDao;
 import dto.AddSuperHeroDto;
@@ -9,13 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class SuperHeroService {
+public class SuperHeroServiceImpl {
     SuperHeroDao dao;
 
-    public SuperHeroService(SuperHeroDao dao){ this.dao = dao;}
+    public SuperHeroServiceImpl(SuperHeroDao dao){ this.dao = dao;}
 
 
-
+    public SuperHero getSuperHeroById(int id){return dao.getSuperHeroById(id);}
+    public SuperTeam getSuperTeamById(int id) {return dao.getSuperTeamById(id);}
+    public List<SuperHero> getAllSuperHeroes() {return dao.getAllSuperHeroes();}
+    public List<SuperTeam> getAllSuperTeams(){return dao.getAllSuperTeams();}
 
 
 /*
@@ -47,7 +50,7 @@ public class SuperHeroService {
         return dao.getSuperHeroBySuperTeam(team);
 
     }
-
+/*
     public List<SuperHero> findAllSuperHero () {
         Map<SuperTeam, List<SuperHero>> SuperHeroMap = dao.getAllSuperHero();
         List<SuperHero> SuperHeros = new ArrayList<SuperHero>();
@@ -59,10 +62,10 @@ public class SuperHeroService {
         return SuperHeros;
     }
 
+
     public List<SuperTeam> getSuperTeams () {
         return new ArrayList <SuperTeam> (dao.getAllSuperTeam());
     }
 
-
- */
+    */
 }

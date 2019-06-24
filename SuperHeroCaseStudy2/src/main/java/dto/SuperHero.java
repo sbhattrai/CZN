@@ -3,6 +3,28 @@ package dto;
 import java.util.ArrayList;
 
 public class SuperHero {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
+
+    public SuperHero(int id, String superName, String realName, ArrayList<String> powers, int age, double height, double weight, char sex, SuperTeam team) {
+        this.id = id;
+        SuperName = superName;
+        RealName = realName;
+        this.powers = powers;
+        this.age = age;
+        this.height = height;
+        this.weight = weight;
+        this.sex = sex;
+        this.team = team;
+    }
+
     private String SuperName;
     private String RealName;
     private ArrayList<String> powers;

@@ -8,7 +8,7 @@ public class SuperHeroMain {
     public static void main (String args[]) {
 //        SuperHeroDao dao= new SuperHeroInMemory(SuperHeroData.getProdData());
 //        SuperHeroRunner View = new SuperHeroView();
-//        SuperHeroService service = new SuperHeroService(dao);
+//        SuperHeroServiceImpl service = new SuperHeroServiceImpl(dao);
 //        SuperHeroController c = new SuperHeroController(View, service);
 
         ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
