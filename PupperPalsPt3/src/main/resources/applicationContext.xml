@@ -1,0 +1,52 @@
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	    <bean id="dataSource"
+          class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url"
+                  value="jdbc:mysql://localhost:3306/pupperpals?serverTimezone=America/Chicago&amp;useSSL=false"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
+    
+        <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="jdbcTemplate"
+          class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    
+	<bean id="PupperDao"
+		class="com.cts.ac.pupperpals.dao.PupperDaoDatabase">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+
+	<bean id="PupperService"
+		class="com.cts.ac.pupperpals.service.PupperServiceImpl">
+		<constructor-arg ref="PupperDao" />
+
+	</bean>
+
+	<bean id="Runner" class="com.cts.ac.pupperpals.view.PupperView" />
+
+	<bean id="Controller"
+		class="com.cts.ac.pupperpals.controller.PupperController">
+		<constructor-arg ref="Runner" />
+		<constructor-arg ref="PupperService" />
+	</bean>
+
+
+
+
+</beans>
